@@ -23,6 +23,25 @@
   - [ ] Configure TypeScript
   - [ ] Configure ESLint and Prettier
 
+## 🔌 2.5. Core Dependencies Setup
+
+- [ ] **Navigation Layer**
+  - [ ] Install @react-navigation/native
+  - [ ] Install @react-navigation/native-stack
+  - [ ] Install @react-navigation/bottom-tabs
+  - [ ] Install required navigation dependencies (screens, safe-area)
+
+- [ ] **State Management**
+  - [ ] Install MobX dependencies
+  - [ ] Configure MobX stores structure
+  - [ ] Set up basic store
+
+- [ ] **Expo Additional Modules**
+  - [ ] Install expo-font
+  - [ ] Install expo-splash-screen
+  - [ ] Install expo-linear-gradient
+  - [ ] Install other required Expo modules
+
 ## 🎨 3. UI/UX Setup
 
 - [ ] **Forms and Validation**
