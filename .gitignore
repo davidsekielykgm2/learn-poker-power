@@ -1,10 +1,9 @@
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
-
-# dependencies
+# Dependencies
 node_modules/
 
 # Expo
 .expo/
+.expo-shared/
 dist/
 web-build/
 
@@ -15,21 +14,47 @@ web-build/
 *.p12
 *.key
 *.mobileprovision
+android/app/build/
+android/build/
+ios/build/
+ios/Pods/
+*.bundle
+*.apk
+*.aab
+*.ipa
 
 # Metro
 .metro-health-check*
+.metro/
 
-# debug
+# Build and cache
+.gradle/
+.idea/
+.vscode/
+*.swp
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Local configuration
+ios/Podfile.lock
+android/local.properties
+
+# Debug
 npm-debug.*
 yarn-debug.*
 yarn-error.*
+
+# Testing
+coverage/
+.jest/
+__snapshots__/
 
 # macOS
 .DS_Store
 *.pem
 
-# local env files
-.env*.local
-
-# typescript
+# TypeScript
 *.tsbuildinfo
