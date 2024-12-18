@@ -9,10 +9,11 @@
 
 ## 🏗️ 1. Development Environment
 
-- [ ] **Mobile Environment**
-  - [ ] Install Node.js (version 18.16.0)
-  - [ ] Install Expo CLI globally
-  - [ ] Install Emulators (IOS and Android)
+- [x] **Mobile Environment**
+  - [x] Install Node.js (version 18.16.0)
+  - [x] Install Expo CLI globally
+  - [x] Install Emulators (IOS and Android)
+  - [x] Install Expo Go app
 
 ## 🔧 2. Initial Setup
 
