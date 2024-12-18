@@ -2,10 +2,10 @@
 
 ## 🎯 0. First steps
 
-- [ ] **Version Control**
-  - [ ] Create Checklist
-  - [ ] Initialize Git
-  - [ ] Push repository
+- [x] **Version Control**
+  - [x] Create Checklist
+  - [x] Initialize Git
+  - [x] Push repository
 
 ## 🏗️ 1. Development Environment
 
