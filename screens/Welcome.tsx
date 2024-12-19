@@ -1,9 +1,9 @@
 import { View, Text, Button } from 'react-native';
 import { commonStyles } from '../styles/common';
 
-import { RootStackScreenProps } from './types';
+import { AuthStackScreenProps } from '../navigation/types';
 
-export function WelcomeScreen({ navigation }: RootStackScreenProps<'Welcome'>) {
+export function WelcomeScreen({ navigation }: AuthStackScreenProps<'Welcome'>) {
   return (
     <View style={commonStyles.centeredContainer}>
       <Text>Bienvenido a Poker Power</Text>
