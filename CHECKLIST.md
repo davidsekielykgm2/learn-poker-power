@@ -23,72 +23,37 @@
   - [x] Configure TypeScript
   - [x] Configure ESLint and Prettier
 
-## 🔌 2.5. Core Dependencies Setup
+## 🔒 3. Authentication Module
 
-- [ ] **Navigation Layer**
-  - [ ] Install @react-navigation/native
-  - [ ] Install @react-navigation/native-stack
-  - [ ] Install @react-navigation/bottom-tabs
-  - [ ] Install required navigation dependencies (screens, safe-area)
+- [ ] **Navigation Setup**
+  - [ ] Install react-navigation core and dependencies
+  - [ ] Configure authentication stack navigator
+  - [ ] Create navigation structure (auth stack vs app stack)
+  - [ ] Set up protected routes logic
 
-- [ ] **State Management**
-  - [ ] Install MobX dependencies
-  - [ ] Configure MobX stores structure
-  - [ ] Set up basic store
+- [ ] **Login Screen**
+  - [ ] Install form management with react-hook-form
+  - [ ] Create reusable form input components
+  - [ ] Implement form validation with Zod
+  - [ ] Add validation rules for email and password
+  - [ ] Handle form submission state
 
-- [ ] **Expo Additional Modules**
-  - [ ] Install expo-font
-  - [ ] Install expo-splash-screen
-  - [ ] Install expo-linear-gradient
-  - [ ] Install other required Expo modules
+- [ ] **API Integration**
+  - [ ] Set up TanStack Query for data fetching
+  - [ ] Create mock service architecture
+  - [ ] Implement authentication API endpoints
+  - [ ] Handle loading, error, and success states
+  - [ ] Add request error boundaries
 
-## 🎨 3. UI/UX Setup
+- [ ] **Session Management**
+  - [ ] Install and configure expo-secure-store
+  - [ ] Create authentication context provider
+  - [ ] Implement session persistence logic
+  - [ ] Add logout functionality
+  - [ ] Handle token refresh flow
 
-- [ ] **Forms and Validation**
-  - [ ] Install and configure react-hook-form
-  - [ ] Set up form validation with Zod
-  - [ ] Create base form components
-
-## 📱 4. First pages
-
-- [ ] **Screens**
-  - [ ] Create Login screen
-  - [ ] Create Register screen
-  - [ ] Create Home screen
-
-## 🔒 5. Authentication Module
-
-- [ ] **Navigation**
-  - [ ] Create auth navigator
-  - [ ] Set up protected routes
-  - [ ] Configure deep linking
-
-## 🧪 6. Mock Setup
-
-- [ ] **Hardcode data**
-  - [ ] Create jsons for each scenario
-
-## 🔄 6. API Integration
-
-- [ ] **Core Configuration**
-  - [ ] Configure GraphQL client
-  - [ ] Set up environment variables
-  - [ ] Set up MobX State Tree stores
-
-- [ ] **GraphQL Setup**
-  - [ ] Configure Apollo Client
-  - [ ] Set up error handling
-  - [ ] Create base queries/mutations
-  - [ ] Implement caching strategy
-
-- [ ] **Service Layer**
-  - [ ] Create API service structure
-  - [ ] Implement interceptors
-  - [ ] Set up retry logic
-  - [ ] Configure timeout handling
-
-- [ ] **State Management**
-  - [ ] Create auth store with MobX
-  - [ ] Set up GraphQL mutations/queries
-  - [ ] Implement token management
-  - [ ] Configure persistent storage
+- [ ] **User Experience**
+  - [ ] Add loading indicators and spinners
+  - [ ] Implement error message components
+  - [ ] Create smooth transition animations
+  - [ ] Add haptic feedback for interactions
