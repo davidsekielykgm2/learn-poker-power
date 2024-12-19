@@ -30,7 +30,6 @@ ios/Pods/
 # Build and cache
 .gradle/
 .idea/
-.vscode/
 *.swp
 
 # Environment files
