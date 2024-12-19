@@ -1,10 +1,23 @@
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import { commonStyles } from '../styles/common';
 
+import { Observer } from 'mobx-react-lite';
+import { useStores } from '../stores/RootStore';
+
 export function LoginScreen() {
+  const { authStore } = useStores();
+
   return (
-    <View style={commonStyles.centeredContainer}>
-      <Text>Login Page</Text>
-    </View>
+    <Observer>
+      {() => (
+        <View style={commonStyles.centeredContainer}>
+          <Text>Login Page</Text>
+          <Button
+            title='Login (simulado)'
+            onPress={() => authStore.login()}
+          />
+        </View>
+      )}
+    </Observer>
   );
 }

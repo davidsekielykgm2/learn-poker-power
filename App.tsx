@@ -1,5 +1,4 @@
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -7,16 +6,24 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AppNavigator } from './navigation/AppNavigator';
 import { AuthNavigator } from './navigation/AuthNavigator';
 
+import { RootStoreProvider, useStores } from './stores/RootStore';
+import { Observer } from 'mobx-react-lite';
 
 export default function App() {
-  const [isAuthenticated] = useState(false);
+  const { authStore } = useStores();
 
   return (
     <SafeAreaProvider>
-      <NavigationContainer>
-        { isAuthenticated ? <AppNavigator /> : <AuthNavigator /> }
-        <StatusBar style="auto" />
-      </NavigationContainer>
+      <RootStoreProvider>
+        <NavigationContainer>
+          <Observer>
+            {() => {
+              return authStore.isAuthenticated ? <AppNavigator /> : <AuthNavigator />;
+            }}
+          </Observer>
+          <StatusBar style="auto" />
+        </NavigationContainer>
+      </RootStoreProvider>
     </SafeAreaProvider>
   );
 }
