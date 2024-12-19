@@ -17,11 +17,11 @@
 
 ## 🔧 2. Initial Setup
 
-- [ ] **Base Repository and Version Control**
+- [x] **Base Repository and Version Control**
   - [x] Create project with Expo (version 49.0.6)
-  - [ ] Edit .gitignore (include iOS/Android specific files)
-  - [ ] Configure TypeScript
-  - [ ] Configure ESLint and Prettier
+  - [x] Edit .gitignore (include iOS/Android specific files)
+  - [x] Configure TypeScript
+  - [x] Configure ESLint and Prettier
 
 ## 🔌 2.5. Core Dependencies Setup
 
