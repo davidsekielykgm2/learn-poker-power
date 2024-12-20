@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { PaperProvider, MD3LightTheme } from 'react-native-paper';
 
 import { AppNavigator } from './navigation/AppNavigator';
 import { AuthNavigator } from './navigation/AuthNavigator';
@@ -22,15 +23,16 @@ const NavigationRoot = () => {
 };
 
 export default function App() {
-
   return (
-    <SafeAreaProvider>
-      <RootStoreProvider>
-        <NavigationContainer>
-          <NavigationRoot />
-          <StatusBar style="auto" />
-        </NavigationContainer>
-      </RootStoreProvider>
-    </SafeAreaProvider>
+    <PaperProvider theme={MD3LightTheme}>
+      <SafeAreaProvider>
+        <RootStoreProvider>
+          <NavigationContainer>
+            <NavigationRoot />
+            <StatusBar style="auto" />
+          </NavigationContainer>
+        </RootStoreProvider>
+      </SafeAreaProvider>
+    </PaperProvider>
   );
 }
