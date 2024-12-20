@@ -9,18 +9,25 @@ import { AuthNavigator } from './navigation/AuthNavigator';
 import { RootStoreProvider, useStores } from './stores/RootStore';
 import { Observer } from 'mobx-react-lite';
 
-export default function App() {
+const NavigationRoot = () => {
   const { authStore } = useStores();
+
+  return (
+    <Observer>
+      {() => {
+        return authStore.isAuthenticated ? <AppNavigator /> : <AuthNavigator />;
+      }}
+    </Observer>
+  );
+};
+
+export default function App() {
 
   return (
     <SafeAreaProvider>
       <RootStoreProvider>
         <NavigationContainer>
-          <Observer>
-            {() => {
-              return authStore.isAuthenticated ? <AppNavigator /> : <AuthNavigator />;
-            }}
-          </Observer>
+          <NavigationRoot />
           <StatusBar style="auto" />
         </NavigationContainer>
       </RootStoreProvider>

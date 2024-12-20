@@ -1,23 +1,28 @@
-import { authStore } from './AuthStore';
 import { createContext, useContext } from 'react';
 
-class RootStore {
-  authStore = authStore;
-}
+import { types, Instance } from 'mobx-state-tree';
+import { AuthStoreModel } from './AuthStore';
 
-const RootStoreContext = createContext<RootStore | null>(null);
+export const RootStoreModel = types
+  .model('RootStore', {
+    authStore: types.optional(AuthStoreModel, {})
+  });
+
+export const rootStore = RootStoreModel.create({});
+
+const RootStoreContext = createContext<Instance<typeof RootStoreModel> | null>(null);
 
 export const useStores = () => {
-  const context = useContext(RootStoreContext);
-  if (context === null) {
+  const store = useContext(RootStoreContext);
+  if (store === null) {
     throw new Error('useStore need to be used inside RootStoreProvider');
   }
 
-  return context;
+  return store;
 };
 
 export const RootStoreProvider = ({ children }: { children: React.ReactNode }) => (
-  <RootStoreContext.Provider value={new RootStore()}>
+  <RootStoreContext.Provider value={rootStore}>
     {children}
   </RootStoreContext.Provider>
 );

@@ -1,25 +1,24 @@
-import { makeAutoObservable } from 'mobx';
+import { types, Instance } from 'mobx-state-tree';
 
-class AuthStore {
+export const AuthStoreModel = types
+  .model('AuthStore', {
+    isAuthenticated: types.optional(types.boolean, false)
+  })
+  .actions(self => {
 
-  isAuthenticated = false;
+    const actions = {
+      setAuthenticated(value: boolean) {
+        self.isAuthenticated = value;
+      },
+      login() {
+        actions.setAuthenticated(true);
+      },
+      logout() {
+        actions.setAuthenticated(false);
+      },
+    };
 
-  constructor() {
-    makeAutoObservable(this);
-  }
+    return actions;
+  });
 
-  setAuthenticated(value: boolean) {
-    this.isAuthenticated = value;
-  }
-
-  login() {
-    this.setAuthenticated(true);
-  }
-
-  logout() {
-    this.setAuthenticated(false);
-  }
-
-}
-
-export const authStore = new AuthStore();
+export type IAuthStore = Instance<typeof AuthStoreModel>
