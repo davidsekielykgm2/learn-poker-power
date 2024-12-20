@@ -34,11 +34,11 @@
   - [x] Install mobx-state-tree and refactor logic
 
 - [ ] **Login Screen**
-  - [ ] Install form management with react-hook-form
-  - [ ] Create reusable form input components
-  - [ ] Implement form validation with Zod
-  - [ ] Add validation rules for email and password
-  - [ ] Handle form submission state
+  - [ ] Install and configure react-native-paper for UI components
+  - [ ] Create reusable form input components using react-native-paper
+  - [ ] Enhance MST store with form state management
+  - [ ] Implement form validation with class-validator
+  - [ ] Add basic error and loading states
 
 - [ ] **API Integration**
   - [ ] Set up TanStack Query for data fetching
