@@ -25,11 +25,13 @@
 
 ## 🔒 3. Authentication Module
 
-- [ ] **Navigation Setup**
-  - [ ] Install react-navigation core and dependencies
-  - [ ] Configure authentication stack navigator
-  - [ ] Create navigation structure (auth stack vs app stack)
-  - [ ] Set up protected routes logic
+- [x] **Navigation Setup**
+  - [x] Install react-navigation core and dependencies
+  - [x] Configure authentication stack navigator
+  - [x] Create navigation structure (auth stack vs app stack)
+  - [x] Install and config state management with mobx and mobx-react-lite
+  - [x] Set up basic protected routes logic
+  - [x] Install mobx-state-tree and refactor logic
 
 - [ ] **Login Screen**
   - [ ] Install form management with react-hook-form
