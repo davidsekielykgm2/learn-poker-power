@@ -1,13 +1,37 @@
+import { useState } from 'react';
+
 import { View, StyleSheet } from 'react-native';
 import { Text, Button } from 'react-native-paper';
 import { commonStyles } from '../styles/common';
 import { FormInput } from '../componets/FormImput';
 
 import { Observer } from 'mobx-react-lite';
-import { useStores } from '../stores/RootStore';
+
+import { authService, LoginCredentials } from '../services/auth';
 
 export function LoginScreen() {
-  const { authStore } = useStores();
+
+  const [formData, setFormData] = useState<LoginCredentials>({
+    email: '',
+    password: ''
+  });
+
+  const handleEmailChange = (email: string) => {
+    setFormData(prev => ({ ...prev, email }));
+  };
+
+  const handlePasswordChange = (password: string) => {
+    setFormData(prev => ({ ...prev, password }));
+  };
+
+  const handleLogin = async () => {
+    try {
+      const response = await authService.login(formData);
+      console.log({response});
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <Observer>
@@ -20,6 +44,8 @@ export function LoginScreen() {
           <View style={styles.form}>
             <FormInput
               label='Email'
+              value={formData.email}
+              onChangeText={handleEmailChange}
               keyboardType='email-address'
               autoCapitalize='none'
               autoCorrect={false}
@@ -27,6 +53,8 @@ export function LoginScreen() {
 
             <FormInput
               label='Password'
+              value={formData.password}
+              onChangeText={handlePasswordChange}
               secureTextEntry
               autoCapitalize='none'
               autoCorrect={false}
@@ -34,7 +62,7 @@ export function LoginScreen() {
 
             <Button
               mode='contained'
-              onPress={() => authStore.login()}
+              onPress={handleLogin}
               style={styles.button}
             >
               <Text>Login (simulado)</Text>
