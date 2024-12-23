@@ -6,10 +6,13 @@ import { commonStyles } from '../styles/common';
 import { FormInput } from '../componets/FormImput';
 
 import { Observer } from 'mobx-react-lite';
+import { useStores } from '../stores/RootStore';
 
 import { authService, LoginCredentials } from '../services/auth';
 
 export function LoginScreen() {
+
+  const { authStore } = useStores();
 
   const [formData, setFormData] = useState<LoginCredentials>({
     email: '',
@@ -28,6 +31,8 @@ export function LoginScreen() {
     try {
       const response = await authService.login(formData);
       console.log({response});
+
+      authStore.setSession(response);
     } catch (error) {
       console.error(error);
     }

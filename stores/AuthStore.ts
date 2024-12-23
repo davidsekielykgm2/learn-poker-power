@@ -1,21 +1,33 @@
 import { types, Instance } from 'mobx-state-tree';
+import { LoginResponse } from '../services/auth';
+
+const UserStoreModel = types
+  .model('UserStore', {
+    id: types.string,
+    email: types.string
+  });
 
 export const AuthStoreModel = types
   .model('AuthStore', {
-    isAuthenticated: types.optional(types.boolean, false)
+    isAuthenticated: types.optional(types.boolean, false),
+    token: types.maybe(types.string),
+    user: types.maybe(UserStoreModel)
   })
   .actions(self => {
 
     const actions = {
-      setAuthenticated(value: boolean) {
-        self.isAuthenticated = value;
+      setSession(data: LoginResponse) {
+        self.token = data.token;
+        self.user = data.user;
+
+        self.isAuthenticated = true;
       },
-      login() {
-        actions.setAuthenticated(true);
-      },
-      logout() {
-        actions.setAuthenticated(false);
-      },
+      clearSession() {
+        self.token = undefined;
+        self.user = undefined;
+
+        self.isAuthenticated = false;
+      }
     };
 
     return actions;
