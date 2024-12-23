@@ -22,7 +22,15 @@ module.exports = {
     },
     ecmaVersion: 'latest',
     sourceType: 'module',
+    project: './tsconfig.json',
+    tsconfigRootDir: __dirname,
   },
+  ignorePatterns: [
+    ".eslintrc.js",
+    "babel.config.js",
+    "metro.config.js",
+    "node_modules/"
+  ],
 
   // Agregamos los plugins necesarios
   plugins: ['@typescript-eslint', 'react', 'react-native'],
@@ -56,6 +64,8 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react-native/no-color-literals': 'warn',
     'react-native/sort-styles': ['error', 'asc'],
+    '@typescript-eslint/no-unsafe-argument': 'off',
+    '@typescript-eslint/no-explicit-any': 'off'
   },
 
   // Configuración de settings
