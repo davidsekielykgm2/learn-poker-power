@@ -1,63 +1,23 @@
-import { useState } from 'react';
-
 import { View, StyleSheet } from 'react-native';
 import { Text, Button, HelperText } from 'react-native-paper';
 import { commonStyles } from '../styles/common';
 import { FormInput } from '../componets/FormImput';
 
 import { Observer } from 'mobx-react-lite';
-import { useStores } from '../stores/RootStore';
 
-import { LoginCredentials } from '../services/auth';
 import { useLogin } from '../hooks/useLogin';
-
-import { validateDTO } from '../validations/utils';
-import { LoginDTO } from '../validations/LoginDTO';
 
 export function LoginScreen() {
 
-  const { authStore } = useStores();
-  const { mutateAsync, isLoading, loginError } = useLogin();
-
-  const [formData, setFormData] = useState<LoginCredentials>({
-    email: '',
-    password: ''
-  });
-
-  const [validationErrors, setValidationErrors] = useState<string[]>([]);
-
-  const handleEmailChange = (email: string) => {
-    setFormData(prev => ({ ...prev, email }));
-    setValidationErrors([]);
-  };
-
-  const handlePasswordChange = (password: string) => {
-    setFormData(prev => ({ ...prev, password }));
-    setValidationErrors([]);
-  };
-
-  const handleLogin = async () => {
-    try {
-      setValidationErrors([]);
-
-      const loginDTO = new LoginDTO(formData);
-      const { isValid, errors: dtoErrors } = await validateDTO(loginDTO);
-
-      if(!isValid) {
-        setValidationErrors(dtoErrors);
-        console.error(dtoErrors);
-        return;
-      }
-
-      const response = await mutateAsync(formData);
-      console.log({response});
-
-      authStore.setSession(response);
-    } catch (error) {
-      console.error(error);
-      setValidationErrors([ 'An unexpected error occurred' ]);
-    }
-  };
+  const {
+    formData,
+    validationErrors,
+    isLoading,
+    loginError,
+    handleEmailChange,
+    handlePasswordChange,
+    handleLogin
+  } = useLogin();
 
   return (
     <Observer>
