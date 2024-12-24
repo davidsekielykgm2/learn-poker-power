@@ -8,7 +8,8 @@ import { FormInput } from '../componets/FormImput';
 import { Observer } from 'mobx-react-lite';
 import { useStores } from '../stores/RootStore';
 
-import { authService, LoginCredentials } from '../services/auth';
+import { LoginCredentials } from '../services/auth';
+import { useLogin } from '../hooks/useLogin';
 
 import { validateDTO } from '../validations/utils';
 import { LoginDTO } from '../validations/LoginDTO';
@@ -16,13 +17,13 @@ import { LoginDTO } from '../validations/LoginDTO';
 export function LoginScreen() {
 
   const { authStore } = useStores();
+  const { mutateAsync, isLoading } = useLogin();
 
   const [formData, setFormData] = useState<LoginCredentials>({
     email: '',
     password: ''
   });
 
-  const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<string[]>([]);
 
   const handleEmailChange = (email: string) => {
@@ -37,7 +38,6 @@ export function LoginScreen() {
 
   const handleLogin = async () => {
     try {
-      setIsLoading(true);
       setErrors([]);
 
       const loginDTO = new LoginDTO(formData);
@@ -49,15 +49,13 @@ export function LoginScreen() {
         return;
       }
 
-      const response = await authService.login(formData);
+      const response = await mutateAsync(formData);
       console.log({response});
 
       authStore.setSession(response);
     } catch (error) {
       console.error(error);
       setErrors([error as string]);
-    } finally {
-      setIsLoading(false);
     }
   };
 
