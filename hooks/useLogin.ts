@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useStores } from '../stores/RootStore';
+import { useAuth } from './useAuth';
 
 import { LoginCredentials } from '../services/auth';
 import { useLoginQueries } from './useLoginQueries';
@@ -8,7 +8,7 @@ import { validateDTO } from '../validations/utils';
 import { LoginDTO } from '../validations/LoginDTO';
 
 export const useLogin = () => {
-  const { authStore } = useStores();
+  const { handleLoginResponse } = useAuth();
   const { mutateAsync, isLoading, loginError } = useLoginQueries();
 
   const [formData, setFormData] = useState<LoginCredentials>({
@@ -44,7 +44,7 @@ export const useLogin = () => {
       const response = await mutateAsync(formData);
       console.log({response});
 
-      authStore.setSession(response);
+      handleLoginResponse(response);
     } catch (error) {
       console.error(error);
       setValidationErrors([ 'An unexpected error occurred' ]);
