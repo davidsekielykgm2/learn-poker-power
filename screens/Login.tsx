@@ -17,35 +17,35 @@ import { LoginDTO } from '../validations/LoginDTO';
 export function LoginScreen() {
 
   const { authStore } = useStores();
-  const { mutateAsync, isLoading } = useLogin();
+  const { mutateAsync, isLoading, loginError } = useLogin();
 
   const [formData, setFormData] = useState<LoginCredentials>({
     email: '',
     password: ''
   });
 
-  const [errors, setErrors] = useState<string[]>([]);
+  const [validationErrors, setValidationErrors] = useState<string[]>([]);
 
   const handleEmailChange = (email: string) => {
     setFormData(prev => ({ ...prev, email }));
-    setErrors([]);
+    setValidationErrors([]);
   };
 
   const handlePasswordChange = (password: string) => {
     setFormData(prev => ({ ...prev, password }));
-    setErrors([]);
+    setValidationErrors([]);
   };
 
   const handleLogin = async () => {
     try {
-      setErrors([]);
+      setValidationErrors([]);
 
       const loginDTO = new LoginDTO(formData);
-      const { isValid, errors: validationErrors } = await validateDTO(loginDTO);
+      const { isValid, errors: dtoErrors } = await validateDTO(loginDTO);
 
       if(!isValid) {
-        setErrors(validationErrors);
-        console.error(validationErrors);
+        setValidationErrors(dtoErrors);
+        console.error(dtoErrors);
         return;
       }
 
@@ -55,7 +55,7 @@ export function LoginScreen() {
       authStore.setSession(response);
     } catch (error) {
       console.error(error);
-      setErrors([error as string]);
+      setValidationErrors([ 'An unexpected error occurred' ]);
     }
   };
 
@@ -89,17 +89,26 @@ export function LoginScreen() {
             />
 
             {
-              errors.length > 0 && (
+              (validationErrors.length > 0 || loginError) && (
                 <View style={styles.errorsContainer}>
-                  {errors.map((error, index) => (
+                  {validationErrors.map((error, index) => (
                     <HelperText
-                      key={index}
+                      key={`validation-${index}`}
                       type="error"
                       visible={true}
                     >
                       {error}
                     </HelperText>
                   ))}
+
+                  {loginError && (
+                    <HelperText
+                      type="error"
+                      visible={true}
+                    >
+                      {loginError.message}
+                    </HelperText>
+                  )}
                 </View>
               )
             }
