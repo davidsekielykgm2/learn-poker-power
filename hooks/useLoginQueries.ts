@@ -1,5 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
-import { authService, LoginCredentials, LoginResponse } from '../services/auth';
+import { mockAuthService } from '../services/mockAuth';
+
+import { LoginCredentials, LoginResponse, ApiResponse } from '../services/types';
 
 export interface LoginError {
   message: string;
@@ -9,11 +11,18 @@ export interface LoginError {
 export const useLoginQueries = () => {
 
   const loginMutation = useMutation<
-    LoginResponse,
+    ApiResponse<LoginResponse>,
     LoginError,
     LoginCredentials
   >({
-    mutationFn: authService.login,
+    mutationFn: mockAuthService.login,
+    retry: (failureCount, error) => {
+      // Only retry network errors, not auth errors
+      if (error.message.includes('Network')) {
+        return failureCount < 3;
+      }
+      return false;
+    },
     onError: (error) => {
       console.error('Authentication error:', error);
 
