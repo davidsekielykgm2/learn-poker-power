@@ -1,5 +1,5 @@
 import { useStores } from '../stores/RootStore';
-import { LoginResponse } from '../services/auth';
+import { LoginResponse } from '../services/types';
 
 export const useAuth = () => {
 

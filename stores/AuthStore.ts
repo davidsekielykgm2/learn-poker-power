@@ -1,5 +1,5 @@
 import { types, Instance } from 'mobx-state-tree';
-import { LoginResponse } from '../services/auth';
+import { LoginResponse } from '../services/types';
 
 const UserStoreModel = types
   .model('UserStore', {

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from './useAuth';
 
-import { LoginCredentials } from '../services/auth';
+import { LoginCredentials } from '../services/types';
 import { useLoginQueries } from './useLoginQueries';
 
 import { validateDTO } from '../validations/utils';
