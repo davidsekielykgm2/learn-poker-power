@@ -33,12 +33,12 @@
   - [x] Set up basic protected routes logic
   - [x] Install mobx-state-tree and refactor logic
 
-- [ ] **Login Screen**
-  - [ ] Install and configure react-native-paper for UI components
-  - [ ] Create reusable form input components using react-native-paper
-  - [ ] Enhance MST store with form state management
-  - [ ] Implement form validation with class-validator
-  - [ ] Add basic error and loading states
+- [x] **Login Screen**
+  - [x] Install and configure react-native-paper for UI components
+  - [x] Create reusable form input components using react-native-paper
+  - [x] Enhance MST store with form state management
+  - [x] Implement form validation with class-validator
+  - [x] Add basic error and loading states
 
 - [ ] **API Integration**
   - [ ] Set up TanStack Query for data fetching
