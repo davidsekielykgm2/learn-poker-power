@@ -43,9 +43,8 @@
 - [ ] **API Integration**
   - [ ] Set up TanStack Query for data fetching
   - [ ] Create mock service architecture
-  - [ ] Implement authentication API endpoints
-  - [ ] Handle loading, error, and success states
-  - [ ] Add request error boundaries
+  - [ ] Implement login endpoint
+  - [ ] Basic error handling in mutations
 
 - [ ] **Session Management**
   - [ ] Install and configure expo-secure-store
@@ -59,3 +58,12 @@
   - [ ] Implement error message components
   - [ ] Create smooth transition animations
   - [ ] Add haptic feedback for interactions
+
+- [ ] **Advanced API Integration**
+  - [ ] Implement GraphQL infrastructure with Apollo Client
+      - [ ] Set up Apollo Client configuration
+      - [ ] Create basic GraphQL schema and types
+      - [ ] Integrate with MST using mst-gql
+  - [ ] Configure Axios for REST endpoints
+      - [ ] Set up interceptors for authentication
+      - [ ] Create request/response transformers
