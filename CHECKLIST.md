@@ -40,11 +40,11 @@
   - [x] Implement form validation with class-validator
   - [x] Add basic error and loading states
 
-- [ ] **API Integration**
-  - [ ] Set up TanStack Query for data fetching
-  - [ ] Create mock service architecture
-  - [ ] Implement login endpoint
-  - [ ] Basic error handling in mutations
+- [x] **API Integration**
+  - [x] Set up TanStack Query for data fetching
+  - [x] Create mock service architecture
+  - [x] Implement login endpoint
+  - [x] Basic error handling in mutations
 
 - [ ] **Session Management**
   - [ ] Install and configure expo-secure-store
