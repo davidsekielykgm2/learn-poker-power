@@ -10,6 +10,9 @@ import { useStores } from '../stores/RootStore';
 
 import { authService, LoginCredentials } from '../services/auth';
 
+import { validateDTO } from '../validations/utils';
+import { LoginDTO } from '../validations/LoginDTO';
+
 export function LoginScreen() {
 
   const { authStore } = useStores();
@@ -29,6 +32,14 @@ export function LoginScreen() {
 
   const handleLogin = async () => {
     try {
+      const loginDTO = new LoginDTO(formData);
+      const { isValid, errors } = await validateDTO(loginDTO);
+
+      if(!isValid) {
+        console.error(errors);
+        return;
+      }
+
       const response = await authService.login(formData);
       console.log({response});
 
