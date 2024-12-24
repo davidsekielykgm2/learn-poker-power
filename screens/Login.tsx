@@ -30,8 +30,12 @@ export function LoginScreen() {
     setFormData(prev => ({ ...prev, password }));
   };
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleLogin = async () => {
     try {
+      setIsLoading(true);
+
       const loginDTO = new LoginDTO(formData);
       const { isValid, errors } = await validateDTO(loginDTO);
 
@@ -46,6 +50,8 @@ export function LoginScreen() {
       authStore.setSession(response);
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -65,6 +71,7 @@ export function LoginScreen() {
               keyboardType='email-address'
               autoCapitalize='none'
               autoCorrect={false}
+              disabled={isLoading}
             />
 
             <FormInput
@@ -74,14 +81,17 @@ export function LoginScreen() {
               secureTextEntry
               autoCapitalize='none'
               autoCorrect={false}
+              disabled={isLoading}
             />
 
             <Button
               mode='contained'
               onPress={handleLogin}
               style={styles.button}
+              loading={isLoading}
+              disabled={isLoading}
             >
-              <Text>Login (simulado)</Text>
+              <Text>{isLoading ? 'Iniciando sesión...' : 'Login'}</Text>
             </Button>
           </View>
 
