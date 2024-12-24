@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { View, StyleSheet } from 'react-native';
-import { Text, Button } from 'react-native-paper';
+import { Text, Button, HelperText } from 'react-native-paper';
 import { commonStyles } from '../styles/common';
 import { FormInput } from '../componets/FormImput';
 
@@ -22,25 +22,30 @@ export function LoginScreen() {
     password: ''
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState<string[]>([]);
+
   const handleEmailChange = (email: string) => {
     setFormData(prev => ({ ...prev, email }));
+    setErrors([]);
   };
 
   const handlePasswordChange = (password: string) => {
     setFormData(prev => ({ ...prev, password }));
+    setErrors([]);
   };
-
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = async () => {
     try {
       setIsLoading(true);
+      setErrors([]);
 
       const loginDTO = new LoginDTO(formData);
-      const { isValid, errors } = await validateDTO(loginDTO);
+      const { isValid, errors: validationErrors } = await validateDTO(loginDTO);
 
       if(!isValid) {
-        console.error(errors);
+        setErrors(validationErrors);
+        console.error(validationErrors);
         return;
       }
 
@@ -50,6 +55,7 @@ export function LoginScreen() {
       authStore.setSession(response);
     } catch (error) {
       console.error(error);
+      setErrors([error as string]);
     } finally {
       setIsLoading(false);
     }
@@ -84,6 +90,22 @@ export function LoginScreen() {
               disabled={isLoading}
             />
 
+            {
+              errors.length > 0 && (
+                <View>
+                  {errors.map((error, index) => (
+                    <HelperText
+                      key={index}
+                      type="error"
+                      visible={true}
+                    >
+                      {error}
+                    </HelperText>
+                  ))}
+                </View>
+              )
+            }
+
             <Button
               mode='contained'
               onPress={handleLogin}
@@ -108,11 +130,14 @@ const styles = StyleSheet.create({
   container: {
     padding: 16,
   },
+  errorsContainer: {
+    marginVertical: 8,
+  },
   form: {
     maxWidth: 400,
     width: '100%',
   },
   title: {
     marginBottom: 24,
-  },
+  }
 });
