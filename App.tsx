@@ -4,6 +4,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { PaperProvider, MD3LightTheme } from 'react-native-paper';
 
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from './lib/react-query';
+
 import { AppNavigator } from './navigation/AppNavigator';
 import { AuthNavigator } from './navigation/AuthNavigator';
 
@@ -26,12 +29,14 @@ export default function App() {
   return (
     <PaperProvider theme={MD3LightTheme}>
       <SafeAreaProvider>
-        <RootStoreProvider>
-          <NavigationContainer>
-            <NavigationRoot />
-            <StatusBar style="auto" />
-          </NavigationContainer>
-        </RootStoreProvider>
+        <QueryClientProvider client={queryClient}>
+          <RootStoreProvider>
+            <NavigationContainer>
+              <NavigationRoot />
+              <StatusBar style="auto" />
+            </NavigationContainer>
+          </RootStoreProvider>
+        </QueryClientProvider>
       </SafeAreaProvider>
     </PaperProvider>
   );

@@ -92,7 +92,7 @@ export function LoginScreen() {
 
             {
               errors.length > 0 && (
-                <View>
+                <View style={styles.errorsContainer}>
                   {errors.map((error, index) => (
                     <HelperText
                       key={index}
