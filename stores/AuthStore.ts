@@ -12,7 +12,8 @@ export const AuthStoreModel = types
   .model('AuthStore', {
     isAuthenticated: types.optional(types.boolean, false),
     token: types.maybe(types.string),
-    user: types.maybe(UserStoreModel)
+    user: types.maybe(UserStoreModel),
+    isInitialized: types.optional(types.boolean, false)
   })
   .actions(self => {
 
@@ -27,6 +28,24 @@ export const AuthStoreModel = types
           self.isAuthenticated = true;
         } catch (error) {
           console.error('Failed to save session:', error);
+        }
+      }),
+      initSession: flow(function* () {
+        if (self.isInitialized) return;
+
+        try {
+          const savedSession = yield secureStore.loadSession();
+
+          if (savedSession?.token && savedSession?.user) {
+            self.token = savedSession.token;
+            self.user = savedSession.user;
+            self.isAuthenticated = true;
+          }
+
+        } catch (error) {
+          console.error('Failed to initialize session:', error);
+        } finally {
+          self.isInitialized = true;
         }
       }),
       clearSession() {
