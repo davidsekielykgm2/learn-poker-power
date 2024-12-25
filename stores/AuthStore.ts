@@ -1,5 +1,6 @@
-import { types, Instance } from 'mobx-state-tree';
+import { types, Instance, flow } from 'mobx-state-tree';
 import { LoginResponse } from '../services/types';
+import { secureStore } from '../services/secureStorage';
 
 const UserStoreModel = types
   .model('UserStore', {
@@ -16,12 +17,18 @@ export const AuthStoreModel = types
   .actions(self => {
 
     const actions = {
-      setSession(data: LoginResponse) {
-        self.token = data.token;
-        self.user = data.user;
+      setSession: flow(function* (data: LoginResponse) {
+        try {
+          yield secureStore.saveSession(data);
 
-        self.isAuthenticated = true;
-      },
+          self.token = data.token;
+          self.user = data.user;
+
+          self.isAuthenticated = true;
+        } catch (error) {
+          console.error('Failed to save session:', error);
+        }
+      }),
       clearSession() {
         self.token = undefined;
         self.user = undefined;
