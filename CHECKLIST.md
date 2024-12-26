@@ -47,9 +47,9 @@
   - [x] Basic error handling in mutations
 
 - [ ] **Session Management**
-  - [ ] Install and configure expo-secure-store
-  - [ ] Create authentication context provider
-  - [ ] Implement session persistence logic
+  - [x] Install and configure expo-secure-store
+  - [x] Create authentication context provider
+  - [x] Implement session persistence logic
   - [ ] Add logout functionality
   - [ ] Handle token refresh flow
 
