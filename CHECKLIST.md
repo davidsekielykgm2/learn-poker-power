@@ -67,3 +67,69 @@
   - [ ] Configure Axios for REST endpoints
       - [ ] Set up interceptors for authentication
       - [ ] Create request/response transformers
+
+## 🏛️ 4. Monorepo Architecture Migration
+
+- [ ] **NX Workspace Setup**
+  - [ ] Initialize NX workspace with TypeScript preset
+  - [ ] Configure NX workspace preferences
+  - [ ] Set up shared TypeScript configuration
+  - [ ] Configure workspace-level ESLint and Prettier
+
+- [ ] **Project Structure Migration**
+  - [ ] Create mobile app structure in apps/mobile
+  - [ ] Move existing React Native code to new structure
+  - [ ] Update import paths and dependencies
+  - [ ] Verify mobile app functionality after migration
+
+- [ ] **Shared Libraries Setup**
+  - [ ] Create shared-types library
+  - [ ] Create shared-utils library
+  - [ ] Configure library build and testing
+  - [ ] Set up library documentation
+
+## 🖥️ 5. Backend Implementation
+
+- [ ] **NestJS Setup**
+  - [ ] Create API project in apps/api
+  - [ ] Configure TypeScript and build process
+  - [ ] Set up development environment
+  - [ ] Configure logging and error handling
+
+- [ ] **Database Integration**
+  - [ ] Set up MongoDB connection
+  - [ ] Configure TypeGoose for models
+  - [ ] Create database schemas
+  - [ ] Implement repository pattern
+
+- [ ] **GraphQL Implementation**
+  - [ ] Set up NestJS GraphQL module
+  - [ ] Define base schema types
+  - [ ] Create GraphQL resolvers
+  - [ ] Implement data loading and caching
+
+- [ ] **Authentication System**
+  - [ ] Implement JWT strategy
+  - [ ] Create auth guards and decorators
+  - [ ] Set up refresh token rotation
+  - [ ] Configure security middleware
+
+## 🔄 6. Frontend-Backend Integration
+
+- [ ] **GraphQL Client Setup**
+  - [ ] Install and configure GraphQL codegen
+  - [ ] Set up mst-gql integration
+  - [ ] Configure Apollo Client
+  - [ ] Implement error handling
+
+- [ ] **State Management Enhancement**
+  - [ ] Refactor MST stores for GraphQL
+  - [ ] Implement optimistic updates
+  - [ ] Set up real-time subscriptions
+  - [ ] Create store persistence strategy
+
+- [ ] **Type Safety**
+  - [ ] Configure type generation pipeline
+  - [ ] Set up continuous type generation
+  - [ ] Implement runtime type checking
+  - [ ] Create type testing utilities
