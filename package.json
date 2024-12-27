@@ -8,7 +8,8 @@
     "android": "nx run mobile:android",
     "build": "nx run-many --target=build --all",
     "test": "nx run-many --target=test --all",
-    "lint": "nx run-many --target=lint --all"
+    "lint": "nx run-many --target=lint --all",
+    "lint:mobile": "nx run mobile:lint"
   },
   "private": true,
   "devDependencies": {
@@ -17,6 +18,11 @@
     "@nx/js": "16.3.2",
     "@nx/linter": "16.6.0",
     "@nx/workspace": "16.6.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react": "^7.37.3",
+    "eslint-plugin-react-native": "^4.1.0",
     "nx": "16.6.0"
   },
   "workspaces": [
