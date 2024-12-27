@@ -1,0 +1,45 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    // Opciones de transpilación
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "declaration": false,
+    "sourceMap": true,
+
+    // Configuración de módulos
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+
+    // Configuraciones de tipos estrictas
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+
+    // Configuración de decoradores (necesario para NestJS y MobX)
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    // Optimizaciones
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "importHelpers": true,
+
+    // Configuración de rutas base para el monorepo
+    "baseUrl": ".",
+    "paths": {
+      "@learn-poker-power/shared/*": ["packages/shared/*"],
+      "@learn-poker-power/types/*": ["packages/shared/types/*"],
+      "@learn-poker-power/utils/*": ["packages/shared/utils/*"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
+}
