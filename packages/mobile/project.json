@@ -1,0 +1,39 @@
+{
+  "name": "mobile",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/mobile",
+  "projectType": "application",
+  "targets": {
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/mobile",
+        "command": "expo start"
+      }
+    },
+    "ios": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
+      "options": {
+        "cwd": "packages/mobile",
+        "command": "expo start --ios"
+      }
+    },
+    "android": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
+      "options": {
+        "cwd": "packages/mobile",
+        "command": "expo start --android"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/dist/packages/mobile"],
+      "options": {
+        "cwd": "packages/mobile",
+        "command": "expo export"
+      }
+    }
+  }
+}

@@ -1,59 +1,39 @@
-# Dependencies
-node_modules/
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# Expo
-.expo/
-.expo-shared/
-dist/
-web-build/
+# compiled output
+dist
+tmp
+/out-tsc
 
-# Native
-*.orig.*
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
-android/app/build/
-android/build/
-ios/build/
-ios/Pods/
-*.bundle
-*.apk
-*.aab
-*.ipa
+# dependencies
+node_modules
 
-# Metro
-.metro-health-check*
-.metro/
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
-# Build and cache
-.gradle/
-.idea/
-*.swp
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
-# Environment files
-.env
-.env.*
-!.env.example
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
 
-# Local configuration
-ios/Podfile.lock
-android/local.properties
-
-# Debug
-npm-debug.*
-yarn-debug.*
-yarn-error.*
-
-# Testing
-coverage/
-.jest/
-__snapshots__/
-
-# macOS
+# System Files
 .DS_Store
-*.pem
-
-# TypeScript
-*.tsbuildinfo
+Thumbs.db
